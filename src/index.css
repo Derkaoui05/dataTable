@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.another {
+    transform: rotate3d(1, 2, 3, -40deg);
+}
