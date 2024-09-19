@@ -1,10 +1,10 @@
 import React from 'react'
-import Table from './layout/Table'
+import Other from './layout/Other'
 
 const App = () => {
   return (
     <div>
-      <Table />
+      <Other />
     </div>
   )
 }

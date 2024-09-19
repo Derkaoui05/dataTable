@@ -1,6 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-.another {
-    transform: rotate3d(1, 2, 3, -40deg);
+
+/* .rotation{
+    transform-origin: bottom left right;
+    height: 200px;
+    transform: rotate(-40deg);
+} */
+
+/* .func{
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  word-break: break-all;
+} */
+
+
+.func {
+    transform: rotate(-45deg); /* Rotate the text to -45 degrees */
+    transform-origin: bottom left; /* Keep the bottom-left corner fixed during rotation */
+    white-space: nowrap; /* Prevent the text from wrapping */
+    position: absolute; /* Position the text absolutely inside the header */
+    bottom: 0; /* Align to the bottom of the header */
+    left: 0; /* Align to the left of the header */
+    padding: 0; /* Remove padding to align perfectly */
+    text-align: left; /* Align text to the left inside the rotated header */
+    width: max-content; /* Allow the header to grow to fit the rotated text */
+}
+th,td{
+    position: relative;
+}
+
+.green{
+    background: green;
+}
+.orange{
+    background: orange;
+}
+.red{
+    background: red;
+}
+.white{
+    background: white;
 }
