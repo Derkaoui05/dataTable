@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const colors = ['green', 'orange', 'red'];
-
 const DATA_URL = '../../data.json';
 
 const fetchAndProcessData = async () => {
@@ -10,7 +8,7 @@ const fetchAndProcessData = async () => {
         const response = await axios.get(DATA_URL);
         const data = response.data;
         const filteredData = data.map((row) => {
-            const { url, IMAGE, TITLE, DESCRIPTION, KEYWORDS, ...filteredRow } = row;
+            const { url, IMAGE, TITLE, DESCRIPTION, KEYWORDS, Column1, ...filteredRow } = row;
             return filteredRow;
         });
         const headers = Object.keys(filteredData[0]).filter(
@@ -24,15 +22,15 @@ const fetchAndProcessData = async () => {
 
 const DataTable = ({ data, headers }) => {
     return (
+    <div className='mb-8'>
       <table>
         <thead>
-          <tr className="">
+          <tr>
             {headers.map((header, index) => (
               <th
                 key={index}
-                className={`px-8 py-4 border-r border-r-gray-400 ${
-                  index >= 5 ? 'rotate-[-68deg] font-normal ' : ''
-                }`}
+                className={`px-8 py-4 border border-gray-400 ${index >= 5 ? 'rotate-[-68deg] font-normal ' : ''
+                  }`}
               >
                 {header}
               </th>
@@ -45,25 +43,27 @@ const DataTable = ({ data, headers }) => {
               {headers.map((header, index) => (
                 <td
                   key={index}
-                  className={`px-4 py-3 border-r border-r-gray-400 ${
-                    index >= 5 && row[header] >= 3 ? 'bg-green-200' : 
-                    row[header] < 0 ? 'bg-red-200' : 
-                    row[header] >= 1 && row[header] < 3 ? 'bg-orange-200' : ''
+                  className={`px-4 py-3  border border-gray-400 ${index >= 5 && row[header] >= 3 ? 'green' :
+                    row[header] < 0 ? 'red' :
+                      row[header] >= 1 && row[header] < 3 ? 'orange' : ''
                   }`}
-                  style={{
-                    backgroundColor: index >= 5 && row[header] >= 3 ? 'green' : 
-                    row[header] < 0 ? 'red' : 
-                    row[header] >= 1 && row[header] < 3 ? 'orange' : '',
-                    color: row[header] === 0 ? 'transparent' : '',
-                  }}
                 >
-                  {row[header] === 0 ? '' : row[header]}
+                  {index >= 5 ? (
+                    row[header] === 0 ? '' : (
+                      row[header] >= 3 ? 'S' :
+                        row[header] < 0 ? 'W' :
+                          'SW'
+                    )
+                  ) : (
+                    row[header]
+                  )}
                 </td>
               ))}
             </tr>
           ))}
         </tbody>
       </table>
+    </div>
     );
   };
 
