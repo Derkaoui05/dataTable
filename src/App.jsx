@@ -1,10 +1,10 @@
 import React from 'react'
-import Other from './layout/Other'
+import DataComponent from './layout/DataComponent'
 
 const App = () => {
   return (
     <div>
-      <Other />
+      <DataComponent />
     </div>
   )
 }

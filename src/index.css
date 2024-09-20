@@ -6,6 +6,9 @@
 .green{
     background: green;
 }
+.red,.green,.orange{
+    color: white;
+}
 .orange{
     background: orange;
 }
